@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "Steep",
+    "slug": "steep",
+    "scheme": "steep",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": false, "bundleIdentifier": "com.arnavparmaj.steep" },
+    "android": {
+      "package": "com.arnavparmaj.steep",
+      "adaptiveIcon": {
+        "backgroundColor": "#1d1612",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": ["expo-router", "expo-sqlite", "expo-font"]
+  }
+}

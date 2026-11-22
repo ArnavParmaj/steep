@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "fp-classic-4min",
+  "brewerId": "french-press-900",
+  "name": "Classic 4-minute",
+  "version": 1,
+  "summary": "The simple everyday press: coarse grind, four minutes, a gentle plunge.",
+  "ratio": { "mild": 17, "standard": 15, "strong": 13 },
+  "tempC": { "light": 96, "medium": 94, "dark": 90 },
+  "grind": { "description": "Coarse, like sea salt", "baselineClick": 30, "placeholder": true },
+  "scale": { "mode": "volume", "minMl": 250, "maxMl": 800, "defaultMl": 500 },
+  "steps": [
+    {
+      "id": "preheat", "type": "action", "title": "Warm the press",
+      "instruction": "Rinse the press with hot water, then pour it out.",
+      "why": "A warm carafe keeps the brew temperature steady while it steeps."
+    },
+    {
+      "id": "bloom", "type": "pour", "title": "Bloom",
+      "pour": { "multDose": 2 }, "durationS": 30,
+      "instruction": "Add the grounds, pour twice their weight in water and stir lightly.",
+      "why": "Wetting all the coffee at once lets the trapped CO2 escape so extraction is even.",
+      "alert": ["sound", "haptic"]
+    },
+    {
+      "id": "steep", "type": "timer", "title": "Steep",
+      "durationS": 210, "pour": { "restOfWater": true },
+      "instruction": "Pour in the rest of the water, put the lid on without plunging and wait.",
+      "why": "Four minutes in total is long enough for body and sweetness before bitterness builds.",
+      "alert": ["sound", "haptic"], "longRunning": true
+    },
+    {
+      "id": "plunge", "type": "action", "title": "Plunge and pour",
+      "instruction": "Press down slowly and steadily, then pour all the coffee out at once.",
+      "why": "Pouring it all out stops extraction; coffee left on the grounds turns bitter."
+    }
+  ],
+  "milk": { "enabled": true, "methods": ["handheld", "press"] },
+  "sources": [
+    { "title": "Volcanica Coffee: French press technique, 3 recipes tested", "url": "https://volcanicacoffee.com/blogs/news/video-guide-french-press-technique-3-recipes-tested" }
+  ],
+  "toConfirm": ["Grind baseline click", "Whether 1:15 at 94°C suits AP's beans"]
+}

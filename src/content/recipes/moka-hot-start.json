@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "id": "moka-hot-start",
+  "brewerId": "moka-6cup",
+  "name": "Hot-water start",
+  "version": 1,
+  "summary": "Start with hot water so the coffee never sits and cooks on the stove. Stop early and cool the base.",
+  "tempC": { "light": 95, "medium": 95, "dark": 90 },
+  "grind": { "description": "Fine, about table salt (finer than drip, coarser than espresso)", "baselineClick": 12, "placeholder": true },
+  "scale": { "mode": "fixed", "minMl": 300, "maxMl": 300, "defaultMl": 300, "fixedDoseG": 20 },
+  "steps": [
+    {
+      "id": "heat", "type": "action", "title": "Heat the water",
+      "instruction": "Boil water in a kettle, then take it off the heat.",
+      "why": "Hot water in the base shortens the time the grounds sit above a flame, which avoids a scorched, metallic taste."
+    },
+    {
+      "id": "fill", "type": "action", "title": "Fill and load",
+      "instruction": "Pour the hot water into the base up to just under the safety valve. Fill the basket level, with no tamping, and wipe stray grounds off the rim.",
+      "why": "Tamping restricts flow and over-extracts."
+    },
+    {
+      "id": "assemble", "type": "action", "title": "Assemble",
+      "instruction": "Screw the top on snugly using a towel, because the base is hot.",
+      "why": "A loose seal leaks steam and pressure."
+    },
+    {
+      "id": "brew", "type": "timer", "title": "Brew on moderate heat",
+      "durationS": 240,
+      "instruction": "Set it on moderate heat with the lid open and the handle clear of the flame. Watch for the coffee stream.",
+      "why": "Gentle heat gives a slow, even flow. Fast, spitting flow means the heat is too high.",
+      "alert": ["sound", "haptic"], "longRunning": true
+    },
+    {
+      "id": "stop", "type": "action", "title": "Stop when the stream blondes",
+      "instruction": "When the stream turns pale, like yellow honey, and starts to sputter, take it off the heat and close the lid.",
+      "why": "The last of the stream is the most bitter part."
+    },
+    {
+      "id": "cool", "type": "action", "title": "Cool the base",
+      "instruction": "Wrap the base in a cold wet towel or run it briefly under cold water, then pour.",
+      "why": "Stops extraction right away, which preserves sweetness."
+    }
+  ],
+  "milk": { "enabled": true, "methods": ["handheld", "press"] },
+  "sources": [
+    { "title": "Stumptown: How to brew coffee in a moka pot", "url": "https://www.stumptowncoffee.com/blogs/news/how-to-brew-in-a-moka-pot" }
+  ],
+  "toConfirm": [
+    "Brew time of about 4 minutes on a gas stove is an estimate, not from the source",
+    "Water level just below the valve and the 20 g dose for a 6-cup pot",
+    "Grind baseline click",
+    "Water temperature is informational: the source gives no number"
+  ]
+}
