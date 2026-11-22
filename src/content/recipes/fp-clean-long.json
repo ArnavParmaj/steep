@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "id": "fp-clean-long",
+  "brewerId": "french-press-900",
+  "name": "Clean cup (long settle)",
+  "version": 1,
+  "summary": "Hoffmann-style: skim the crust, let the grounds settle, and never plunge. Clean cup with little sediment.",
+  "ratio": { "mild": 17, "standard": 16.7, "strong": 15 },
+  "tempC": { "light": 98, "medium": 96, "dark": 92 },
+  "grind": { "description": "Medium-coarse", "baselineClick": 26, "placeholder": true },
+  "scale": { "mode": "volume", "minMl": 250, "maxMl": 800, "defaultMl": 500 },
+  "steps": [
+    {
+      "id": "pour", "type": "pour", "title": "Add the water",
+      "pour": { "percentWater": 100 }, "durationS": 10,
+      "instruction": "Add the grounds and pour all the water in about 10 seconds.",
+      "why": "A quick pour wets everything evenly and starts extraction together."
+    },
+    {
+      "id": "steep", "type": "timer", "title": "Steep",
+      "durationS": 230,
+      "instruction": "Leave it alone with the lid off.",
+      "why": "About four minutes of undisturbed steeping while the crust of grounds forms on top.",
+      "alert": ["sound", "haptic"], "longRunning": true
+    },
+    {
+      "id": "stir", "type": "action", "title": "Break the crust",
+      "instruction": "Stir the crust gently so it sinks, then scoop off the foam and any floating grounds with two spoons.",
+      "why": "Removing the floaters is what keeps the cup clean."
+    },
+    {
+      "id": "settle", "type": "timer", "title": "Let it settle",
+      "durationS": 300,
+      "instruction": "Wait for the rest of the grounds to sink. Five minutes minimum; up to eight is fine.",
+      "why": "Gravity does the filtering, so the cup has far less silt.",
+      "alert": ["sound", "haptic"], "longRunning": true
+    },
+    {
+      "id": "pour-out", "type": "action", "title": "Rest the plunger and pour",
+      "instruction": "Rest the plunger just above the surface without pressing. Pour slowly and stop before the sludge at the bottom.",
+      "why": "Pressing would stir the settled fines back into the cup."
+    }
+  ],
+  "milk": { "enabled": true, "methods": ["handheld", "press"] },
+  "sources": [
+    { "title": "Honest Coffee Guide: James Hoffmann French press", "url": "https://honestcoffeeguide.com/brew-recipes/james-hoffmann-french-press/" },
+    { "title": "Volcanica Coffee: French press technique, 3 recipes tested", "url": "https://volcanicacoffee.com/blogs/news/video-guide-french-press-technique-3-recipes-tested" }
+  ],
+  "toConfirm": ["Grind baseline click", "Source lists 30 g to 500 g near-boiling water; temperatures here are scaled by roast"]
+}

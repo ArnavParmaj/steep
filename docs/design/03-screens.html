@@ -1,0 +1,157 @@
+<title>Dark Roast Screens</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: review sheet. Flows as rows of phone mockups, grouped by user flow. Tokens match the approved design system. */
+:root{--pg:#120d0a;--bg:#1d1612;--surf:#2a201b;--surf2:#342822;--ink:#f2e8dc;--mute:#a39283;--line:#3b2f28;--accent:#e2a56b;--on:#2a1a0e;--soft:#3a2b21;--ok:#9bb58a;--warn:#d98a6a;--glow:#e2a56b66;color-scheme:dark;--f:"Outfit",system-ui,sans-serif}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--pg:#e9e0d3;--bg:#f6f0e7;--surf:#ebe2d5;--surf2:#e1d6c6;--ink:#33281f;--mute:#85766a;--line:#ddd2c2;--accent:#b5683f;--on:#fff8f0;--soft:#ead7c6;--ok:#6f8a5c;--warn:#b4543a;--glow:#0000;color-scheme:light}}
+:root[data-theme="light"]{--pg:#e9e0d3;--bg:#f6f0e7;--surf:#ebe2d5;--surf2:#e1d6c6;--ink:#33281f;--mute:#85766a;--line:#ddd2c2;--accent:#b5683f;--on:#fff8f0;--soft:#ead7c6;--ok:#6f8a5c;--warn:#b4543a;--glow:#0000;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pg);color:var(--ink);font:300 15px/1.5 var(--f);padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:28px 80px}
+.w{max-width:1240px;margin:0 auto}
+h1{font:200 40px/1.05 var(--f);margin:0 0 8px;letter-spacing:-.02em}
+h2{font:300 24px var(--f);margin:52px 0 4px}
+.lede{color:var(--mute);max-width:70ch;margin:0 0 6px}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.tog{display:flex;background:var(--surf);border-radius:99px;padding:4px}
+.tog button{font:500 13px var(--f);border:0;background:none;color:var(--mute);padding:8px 16px;border-radius:99px;cursor:pointer}
+.tog button[aria-pressed=true]{background:var(--accent);color:var(--on)}
+.flow{display:flex;gap:26px;overflow-x:auto;padding:14px 6px 22px}
+.cap{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:12px;max-width:290px}
+.col{flex:0 0 auto}
+.ph{width:290px;height:610px;border-radius:44px;background:var(--bg);position:relative;overflow:hidden;padding:48px 20px 18px;display:flex;flex-direction:column;box-shadow:0 0 0 7px #00000022,0 22px 44px -20px #000a}
+.ph.dk{--bg:#1d1612;--surf:#2a201b;--surf2:#342822;--ink:#f2e8dc;--mute:#a39283;--accent:#e2a56b;--on:#2a1a0e;--soft:#3a2b21;--ok:#9bb58a;--warn:#d98a6a;color:var(--ink)}
+.ph{color:var(--ink)}
+.ph::before{content:"";position:absolute;top:10px;left:50%;width:84px;height:24px;margin-left:-42px;border-radius:14px;background:#000}
+.hd{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--mute)}
+.lab{font:500 11.5px var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.ti{font:300 28px/1.1 var(--f);letter-spacing:-.01em;margin:12px 0 4px}
+.sub{font-size:13.5px;color:var(--mute)}
+.card{background:var(--surf);border-radius:24px;padding:14px 16px;margin-top:10px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.card b{font-weight:500;font-size:15px;display:block}.card span{font-size:12.5px;color:var(--mute)}
+.btn{height:52px;border-radius:99px;background:var(--accent);color:var(--on);display:grid;place-items:center;font:500 16px var(--f);box-shadow:0 10px 26px -12px var(--glow)}
+.btn.s{background:var(--surf);color:var(--ink);box-shadow:none}
+.push{margin-top:auto}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.chip{padding:8px 13px;border-radius:99px;background:var(--surf);font-size:13px}.chip.on{background:var(--accent);color:var(--on)}
+.seg{display:flex;background:var(--surf);border-radius:99px;padding:4px;margin-top:8px}
+.seg i{flex:1;text-align:center;font-style:normal;font-size:13px;padding:8px 0;border-radius:99px;color:var(--mute)}
+.seg i.on{background:var(--accent);color:var(--on);font-weight:500}
+.sl{margin-top:14px}.sl .l{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin-bottom:8px}
+.tr{height:8px;border-radius:9px;background:var(--surf2);position:relative}
+.tr i{position:absolute;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--soft)}
+.big{font:200 44px/1 var(--f);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tile{background:var(--surf);border-radius:22px;padding:14px}
+.tile .v{font:200 34px/1 var(--f);margin:6px 0 2px;font-variant-numeric:tabular-nums}.tile .v small{font-size:14px;color:var(--mute);font-weight:300}
+.tabs{display:flex;justify-content:space-around;font-size:11.5px;color:var(--mute);margin-top:12px}.tabs .on{color:var(--ink);font-weight:500}
+.ring{position:relative;width:228px;height:228px;margin:6px auto;display:grid;place-items:center}
+.ring svg{position:absolute;inset:0}
+.ring .n{font:200 72px var(--f);font-variant-numeric:tabular-nums;letter-spacing:-.03em;text-align:center;line-height:1}
+.ring .n small{display:block;font:300 14px var(--f);color:var(--mute);letter-spacing:0;margin-top:6px}
+.why{background:var(--surf);border-radius:22px;padding:12px 14px;font-size:13px;line-height:1.45;margin-bottom:12px}
+.steps{display:flex;gap:6px;justify-content:center;margin:2px 0 8px}.steps i{width:28px;height:5px;border-radius:9px;background:var(--surf2)}.steps i.d{background:var(--accent)}.steps i.n{background:var(--accent);opacity:.5}
+.li{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.li span{color:var(--mute);font-size:12.5px}
+.star{display:flex;gap:6px;margin-top:10px}.star svg{width:30px;height:30px}
+.tip{background:var(--soft);border-radius:22px;padding:14px;font-size:13.5px;margin-top:12px}.tip b{font-weight:500;display:block;margin-bottom:3px}
+.inp{background:var(--surf);border-radius:18px;padding:11px 14px;margin-top:8px;font-size:14px;display:flex;justify-content:space-between}.inp span{color:var(--mute)}
+.lock{background:linear-gradient(#17110d,#0b0807);--ink:#f2e8dc;--mute:#a39283}
+.lock .clk{text-align:center;font:200 70px var(--f);margin:20px 0 4px;color:#f2e8dc;letter-spacing:-.02em}
+.lock .dt{text-align:center;color:#a39283;font-size:14px;margin-bottom:26px}
+.la{background:#241b16;border-radius:26px;padding:14px 16px;color:#f2e8dc}
+.la .r{display:flex;justify-content:space-between;align-items:center}.la .r small{color:#a39283;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.la .b{font:200 42px/1 var(--f);font-variant-numeric:tabular-nums}
+.la .bar{height:6px;border-radius:9px;background:#342822;margin-top:10px}.la .bar i{display:block;height:100%;width:62%;background:#e2a56b;border-radius:9px}
+.and{background:#2b2420;border-radius:22px;padding:12px 14px;color:#f2e8dc;margin-top:14px;font-size:13px}
+.and .h{display:flex;justify-content:space-between;color:#a39283;font-size:11px}.and b{font:400 22px var(--f);display:block;margin:4px 0 0}
+.note{background:var(--surf);border-radius:20px;padding:14px 16px;max-width:560px;color:var(--mute);font-size:14px;margin-top:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+@media (prefers-reduced-motion:no-preference){.dot{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.3}}}
+</style>
+<div class="w">
+<div class="top"><div><h1>Dark Roast: v1 screens</h1>
+<p class="lede">Hi-fi screens for every v1 flow, in the approved Dark Roast system. Use the toggle to see both themes. All amounts are sample values (500 ml French press, 1:15). Grind click numbers are placeholders until you record your baselines.</p></div>
+<div class="tog" role="group" aria-label="Theme"><button id="bd" aria-pressed="true">Espresso</button><button id="bl" aria-pressed="false">Cream</button></div></div>
+<div id="out"></div>
+</div>
+<script>
+const star=(f)=>`<svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" fill="${f?'var(--accent)':'var(--surf2)'}"/></svg>`;
+const sl=(a,b,p)=>`<div class="sl"><div class="l"><span>${a}</span><span>${b}</span></div><div class="tr"><i style="left:${p}%"></i></div></div>`;
+const tabs=(o)=>`<div class="tabs">${['Brew','Log','Beans','Settings'].map(t=>`<span class="${t==o?'on':''}">${t}</span>`).join('')}</div>`;
+const ring=(p,n,s)=>`<div class="ring"><svg viewBox="0 0 228 228"><circle cx="114" cy="114" r="104" fill="none" stroke="var(--surf2)" stroke-width="10"/><circle cx="114" cy="114" r="104" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="653.4" stroke-dashoffset="${653.4*(1-p)}" transform="rotate(-90 114 114)"/></svg><div class="n">${n}<small>${s}</small></div></div>`;
+const S={
+home:()=>`<div class="lab">Sunday</div><div class="ti">Good morning, AP</div><div class="sub">What are we brewing?</div>
+<div class="card"><div><b>French press</b><span>Brew again: 500 ml, standard, black</span></div><span style="color:var(--accent);font-weight:500">Go</span></div>
+<div class="card"><div><b>Moka pot</b><span>6 cup, ~5 min</span></div><span style="color:var(--accent);font-weight:500">Go</span></div>
+<div class="lab" style="margin-top:20px">Favourites</div>
+<div class="card"><div><b>Sunday slow</b><span>French press, 4:00, Ethiopia</span></div><span>4.5</span></div>
+<div class="push"></div>${tabs('Brew')}`,
+setup:()=>`<div class="hd"><span>Back</span><span>French press</span></div><div class="ti">Set up your brew</div>
+<div class="lab" style="margin-top:10px">Amount</div><div class="big" style="margin-top:6px">500<small style="font:300 16px var(--f);color:var(--mute)"> ml</small></div>${sl('250','900',45)}
+<div class="lab" style="margin-top:16px">Strength</div><div class="seg"><i>Mild</i><i class="on">Standard</i><i>Strong</i></div>
+<div class="lab" style="margin-top:14px">Drink</div><div class="seg"><i class="on">Black</i><i>With milk</i></div>
+<div class="inp">Beans<span>Ethiopia Guji, 9 days</span></div><div class="inp">Water<span>Filtered</span></div>
+<div class="push"></div><div class="btn">See the recipe</div>`,
+review:()=>`<div class="hd"><span>Back</span><span>French press</span></div><div class="ti">Your recipe</div><div class="sub">Medium roast, 9 days off roast</div>
+<div class="grid2"><div class="tile"><span class="lab">Coffee</span><div class="v">33.5<small> g</small></div></div><div class="tile"><span class="lab">Water</span><div class="v">500<small> ml</small></div></div><div class="tile"><span class="lab">Grind</span><div class="v">24<small> clicks</small></div></div><div class="tile"><span class="lab">Temp</span><div class="v">94<small> °C</small></div></div></div>
+<div class="tip"><b>Ratio 1 : 15</b>Four minutes, one stir at 1:00, plunge slowly.</div>
+<div class="push"></div><div class="btn">Start brew</div>`,
+timer1:()=>`<div class="hd"><span>French press</span><span>Step 2 of 4</span></div>${ring(.62,'2:31','Steep, lid on')}<div class="steps"><i class="d"></i><i class="n"></i><i></i><i></i></div>
+<div class="push"></div><div class="why"><span class="lab" style="display:block;margin-bottom:3px">Why</span>Leave it still. Hot water pulls out sweetness first, so stirring now only adds bitterness.</div><div style="display:flex;gap:10px"><div class="btn s" style="width:52px"><svg width="20" height="20" viewBox="0 0 22 22" fill="currentColor"><rect x="5" y="4" width="4" height="14" rx="1.5"/><rect x="13" y="4" width="4" height="14" rx="1.5"/></svg></div><div class="btn" style="flex:1">Next: plunge at 4:00</div></div>`,
+pour:()=>`<div class="hd"><span>French press</span><span>Step 1 of 4</span></div>${ring(.0,'0:30','Bloom')}<div class="steps"><i class="n"></i><i></i><i></i><i></i></div>
+<div class="push"></div><div class="tile" style="margin-bottom:12px;text-align:center"><span class="lab">Pour now</span><div class="v">100<small> ml at 94 °C</small></div></div><div class="btn">Start 0:30</div>`,
+moka:()=>`<div class="hd"><span>Moka pot</span><span>Step 3 of 4</span></div>${ring(.45,'2:05','Heat, lid open')}<div class="steps"><i class="d"></i><i class="d"></i><i class="n"></i><i></i></div>
+<div class="push"></div><div class="why"><span class="lab" style="display:block;margin-bottom:3px">Why</span>Low flame, lid open. When it starts to gurgle, take it off the heat so it doesn't turn bitter.</div><div class="btn">Done, it's gurgling</div>`,
+milk:()=>`<div class="hd"><span>Milk</span><span>Optional</span></div><div class="ti">Add milk</div><div class="sub">100 ml per cup, 200 ml total</div>
+<div class="card"><div><b>Handheld frother</b><span>20 seconds</span></div><span style="color:var(--accent)">Pick</span></div><div class="card"><div><b>French press froth</b><span>Rinse first, then 20 pumps</span></div><span style="color:var(--accent)">Pick</span></div>
+<div class="push"></div><div class="btn s">Skip, drink black</div>`,
+done:()=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center"><div class="lab">Brew complete</div><div class="big" style="margin:10px 0">4:00</div><div class="sub">French press, 500 ml<br>Pour, serve and enjoy</div></div><div class="btn">Rate this brew</div>`,
+rate:()=>`<div class="hd"><span>Skip</span><span>French press</span></div><div class="ti">How did it taste?</div><div class="star">${[1,1,1,1,0].map(star).join('')}</div>
+${sl('Sour','Bitter',58)}${sl('Weak','Strong',62)}${sl('Thin','Heavy',50)}
+<div class="chips"><span class="chip on">Sweet</span><span class="chip">Fruity</span><span class="chip on">Chocolate</span><span class="chip">Nutty</span></div>
+<div class="push"></div><div class="btn">Save</div>`,
+fix:()=>`<div class="hd"><span>Back</span><span>Fix it</span></div><div class="ti">Slightly bitter</div><div class="sub">Pick one symptom. We change one thing at a time.</div>
+<div class="chips"><span class="chip">Sour</span><span class="chip on">Bitter</span><span class="chip">Weak</span><span class="chip">Muddy</span></div>
+<div class="tip"><b>Grind one click coarser</b>Bitter taste usually means over-extraction. A coarser grind slows how fast flavour comes out. Everything else stays the same.</div>
+<div class="push"></div><div class="btn">Brew again with this change</div><div style="text-align:center;font-size:13px;color:var(--mute);margin-top:12px">Not now</div>`,
+log:()=>`<div class="ti" style="margin-top:0">Brew log</div><div class="chips" style="margin-top:2px"><span class="chip on">All</span><span class="chip">French press</span><span class="chip">Moka</span></div>
+<div class="li"><div>French press<br><span>Today, Ethiopia Guji</span></div><div style="text-align:right">4.0<br><span>Slightly bitter</span></div></div>
+<div class="li"><div>Moka pot<br><span>Yesterday, House blend</span></div><div style="text-align:right">4.5<br><span>Balanced</span></div></div>
+<div class="li"><div>French press<br><span>Fri, Ethiopia Guji</span></div><div style="text-align:right">3.5<br><span>Sour</span></div></div>
+<div class="li"><div>Moka pot<br><span>Thu, House blend</span></div><div style="text-align:right">4.0<br><span>Strong</span></div></div>
+<div class="push"></div>${tabs('Log')}`,
+detail:()=>`<div class="hd"><span>Back</span><span>Today</span></div><div class="ti">French press, 4.0</div><div class="sub">Ethiopia Guji, medium roast, filtered water</div>
+<div class="li" style="margin-top:12px"><span>Coffee</span><div>33.5 g <span>planned</span> · 34 g <span>actual</span></div></div>
+<div class="li"><span>Water</span><div>500 ml · 500 ml</div></div><div class="li"><span>Grind</span><div>24 clicks · 24 clicks</div></div><div class="li"><span>Time</span><div>4:00 · 4:20</div></div>
+<div class="tip"><b>Change tested</b>Grind one click coarser. Result: less bitter.</div>
+<div class="push"></div><div class="btn">Brew again</div>`,
+beans:()=>`<div class="ti" style="margin-top:0">Beans</div>
+<div class="card"><div><b>Ethiopia Guji</b><span>Light-medium · 9 days off roast</span></div><span class="dot"></span></div>
+<div class="card"><div><b>House blend</b><span>Dark · 24 days off roast</span></div></div>
+<div class="push"></div><div class="btn s" style="margin-bottom:8px">Add beans</div>${tabs('Beans')}`,
+addbean:()=>`<div class="hd"><span>Cancel</span><span>New beans</span></div><div class="ti">Add beans</div>
+<div class="inp">Name<span>Ethiopia Guji</span></div><div class="lab" style="margin-top:12px">Roast level</div><div class="seg"><i>Light</i><i class="on">Medium</i><i>Dark</i></div>
+<div class="inp">Roast date<span>13 Nov 2026</span></div><div class="inp">Origin<span>Ethiopia</span></div>
+<div class="push"></div><div class="btn">Save beans</div>`,
+recipe:()=>`<div class="hd"><span>Back</span><span>My recipe</span></div><div class="ti">Sunday slow</div><div class="sub">Copy of French press standard</div>
+<div class="inp">Ratio<span>1 : 15</span></div><div class="inp">Temp<span>94 °C</span></div><div class="inp">Grind<span>24 clicks</span></div>
+<div class="lab" style="margin-top:14px">Steps</div><div class="li"><div>Bloom<br><span>100 ml, 0:30</span></div><span>Edit</span></div><div class="li"><div>Steep<br><span>4:00</span></div><span>Edit</span></div>
+<div class="push"></div><div class="btn">Save recipe</div>`,
+settings:()=>`<div class="ti" style="margin-top:0">Settings</div><div class="lab" style="margin-top:8px">Theme</div><div class="seg"><i class="on">Auto</i><i>Espresso</i><i>Cream</i></div>
+<div class="lab" style="margin-top:14px">Timer sound</div><div class="seg"><i class="on">Wood</i><i>Glass</i><i>Off</i></div>
+<div class="inp">Grinder baselines<span>Set</span></div><div class="inp">Export all data<span>File</span></div><div class="inp">Import recipes<span>File</span></div>
+<div class="push"></div>${tabs('Settings')}`,
+live:()=>`<div class="clk">9:41</div><div class="dt">Sunday 22 November</div><div class="la"><div class="r"><small>French press · Step 2 of 4</small><span class="dot"></span></div><div class="r" style="margin-top:8px"><div class="b">2:31</div><small>Steep</small></div><div class="bar"><i></i></div></div>`,
+droid:()=>`<div class="lab" style="margin-top:20px;color:#a39283">Android notification</div><div class="and"><div class="h"><span>Coffee app</span><span>now</span></div><b>2:31 · Steep</b><div style="color:#a39283;margin-top:2px">French press, step 2 of 4. Plunge at 4:00.</div></div>`};
+const F=[
+['Daily brew','Home to setup, recipe, timer, milk and done.',[['Home','home'],['Setup','setup'],['Recipe','review'],['Pour','pour'],['Timer','timer1'],['Milk','milk'],['Done','done']]],
+['Moka pot','Water is fixed at the fill line, so setup is simpler.',[['Moka timer','moka']]],
+['Rate and fix a bad cup','One symptom, one change, brewed again from the log.',[['Rate','rate'],['Fix it','fix'],['Log','log'],['Log entry','detail']]],
+['Beans, recipes, settings','',[['Beans','beans'],['Add beans','addbean'],['Edit recipe','recipe'],['Settings','settings']]]];
+document.getElementById('out').innerHTML=F.map(([t,d,s])=>`<h2>${t}</h2><p class="lede">${d}</p><div class="flow">${s.map(([c,k])=>`<div class="col"><div class="ph">${S[k]()}</div><div class="cap">${c}</div></div>`).join('')}</div>`).join('')+
+`<h2>Live Activity and notification</h2><p class="lede">Always dark. iPhone Live Activity on the lock screen and Android ongoing notification.</p><div class="flow"><div class="col"><div class="ph lock dk">${S.live()}</div><div class="cap">iPhone lock screen</div></div><div class="col"><div class="ph lock dk" style="padding-top:60px">${S.droid()}</div><div class="cap">Android</div></div></div>`;
+const r=document.documentElement,bd=document.getElementById('bd'),bl=document.getElementById('bl');
+function set(t){r.dataset.theme=t;bd.setAttribute('aria-pressed',t=='dark');bl.setAttribute('aria-pressed',t=='light')}
+bd.onclick=()=>set('dark');bl.onclick=()=>set('light');set('dark');
+</script>

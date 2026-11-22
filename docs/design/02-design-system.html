@@ -1,0 +1,114 @@
+<title>Dark Roast Design System</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one long reference page. Tokens at top are the app's real tokens, dark (Espresso) by default, light (Cream) on toggle or system. */
+:root{--bg:#1d1612;--surf:#2a201b;--surf2:#342822;--ink:#f2e8dc;--mute:#a39283;--line:#3b2f28;--accent:#e2a56b;--on:#2a1a0e;--soft:#3a2b21;--ok:#9bb58a;--warn:#d98a6a;color-scheme:dark;--f:"Outfit",system-ui,sans-serif}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f0e7;--surf:#ebe2d5;--surf2:#e1d6c6;--ink:#33281f;--mute:#85766a;--line:#ddd2c2;--accent:#b5683f;--on:#fff8f0;--soft:#ead7c6;--ok:#6f8a5c;--warn:#b4543a;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f6f0e7;--surf:#ebe2d5;--surf2:#e1d6c6;--ink:#33281f;--mute:#85766a;--line:#ddd2c2;--accent:#b5683f;--on:#fff8f0;--soft:#ead7c6;--ok:#6f8a5c;--warn:#b4543a;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:300 16px/1.55 var(--f);padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:28px 80px;margin:0}
+.w{max-width:980px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+h1{font:200 44px/1.05 var(--f);margin:0 0 8px;letter-spacing:-.02em}
+h2{font:300 26px var(--f);margin:56px 0 6px}
+p{color:var(--mute);max-width:64ch;margin:0 0 14px}
+.tog{display:flex;background:var(--surf);border-radius:99px;padding:4px}
+.tog button{font:500 13px var(--f);border:0;background:none;color:var(--mute);padding:8px 16px;border-radius:99px;cursor:pointer}
+.tog button[aria-pressed=true]{background:var(--accent);color:var(--on)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sec{border-top:1px solid var(--line)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.sw{border-radius:20px;overflow:hidden;background:var(--surf)}
+.sw i{display:block;height:70px}
+.sw div{padding:10px 14px;font-size:13px}
+.sw b{font-weight:500;display:block}.sw span{color:var(--mute)}
+.t{display:grid;grid-template-columns:130px 1fr;gap:6px 18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.t small{color:var(--mute);font-size:12px}
+.row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{height:54px;padding:0 28px;border-radius:99px;background:var(--accent);color:var(--on);font:500 16px var(--f);display:inline-grid;place-items:center;border:0}
+.btn.s{background:var(--surf);color:var(--ink)}
+.btn.g{background:none;color:var(--accent);padding:0 12px}
+.chip{padding:9px 16px;border-radius:99px;background:var(--surf);font-size:14px}.chip.on{background:var(--accent);color:var(--on)}
+.card{background:var(--surf);border-radius:26px;padding:18px 20px;min-width:230px;flex:1}
+.card b{font-weight:500;display:block}.card span{color:var(--mute);font-size:14px}
+.track{height:8px;border-radius:9px;background:var(--surf2);position:relative;width:240px}
+.track i{position:absolute;top:50%;left:55%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px var(--soft)}
+.ringbox{position:relative;width:200px;height:200px;display:grid;place-items:center}
+.ringbox svg{position:absolute;inset:0}
+.ringbox .n{font:200 56px var(--f);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.two{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.rule{display:grid;grid-template-columns:150px 1fr;gap:4px 18px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.rule b{font-weight:500}.rule span{color:var(--mute)}
+.lock{width:340px;max-width:100%;background:#0d0a08;border-radius:36px;padding:22px 16px 18px;color:#f2e8dc}
+.lock .clk{text-align:center;font:200 64px var(--f);margin:6px 0 18px;letter-spacing:-.02em}
+.la{background:#241b16;border-radius:26px;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center}
+.la small{color:#a39283;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.la .big{font:200 46px/1 var(--f);font-variant-numeric:tabular-nums;color:#f2e8dc}
+.la .bar{grid-column:1/-1;height:6px;border-radius:9px;background:#342822;margin-top:10px;overflow:hidden}
+.la .bar i{display:block;height:100%;width:62%;border-radius:9px;background:#e2a56b}
+.isl{background:#000;border-radius:99px;height:38px;width:210px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;color:#f2e8dc;font:300 15px var(--f);margin-top:18px}
+.isl em{font-style:normal;color:#e2a56b;font-variant-numeric:tabular-nums}
+.dot{width:10px;height:10px;border-radius:50%;background:#e2a56b;display:inline-block}
+@media (prefers-reduced-motion:no-preference){.dot{animation:p 2.4s ease-in-out infinite}@keyframes p{50%{opacity:.35}}}
+</style>
+<div class="w">
+<header><div><h1>Dark Roast</h1><p>Design system for the coffee app. Soft, warm and quiet, built to be read from across a kitchen. Two themes only: Espresso (dark) and Cream (light), plus Auto, which follows the phone. Use the toggle to preview both.</p></div>
+<div class="tog" role="group" aria-label="Theme"><button id="bd" aria-pressed="true">Espresso</button><button id="bl" aria-pressed="false">Cream</button></div></header>
+
+<section class="sec"><h2>Principles</h2>
+<div class="rule"><b>One thing at a time</b><span>Each screen has a single focus: the next brew, the running timer, the rating.</span></div>
+<div class="rule"><b>Numbers are heroes</b><span>Time, grams and millilitres are set large and light, so they read from 2 metres away.</span></div>
+<div class="rule"><b>Soft, never sharp</b><span>Round corners, no hard borders, low-contrast surfaces, slow gentle motion.</span></div>
+<div class="rule"><b>Explain the why</b><span>Every timer step shows one short sentence on why it matters.</span></div></section>
+
+<section class="sec"><h2>Colour</h2><p>Eight roles per theme. Components only use roles, never raw hex, so a theme is one small table.</p>
+<div class="grid" id="sw"></div></section>
+
+<section class="sec"><h2>Type</h2><p>One family, Outfit, in weights from 200 to 600. Thin weights are for big numerals only. Everything under 24 px uses 300 or 400 for body and 500 for emphasis.</p>
+<div class="t"><small>Timer 96 / 200</small><span style="font:200 96px/1 var(--f);font-variant-numeric:tabular-nums;letter-spacing:-.03em">2:31</span></div>
+<div class="t"><small>Display 32 / 300</small><span style="font:300 32px var(--f)">Good morning, AP</span></div>
+<div class="t"><small>Title 22 / 400</small><span style="font:400 22px var(--f)">French press</span></div>
+<div class="t"><small>Body 16 / 300</small><span>Leave it still. Hot water pulls out sweetness first.</span></div>
+<div class="t"><small>Caption 13 / 400</small><span style="font-size:13px;color:var(--mute)">500 ml, 4 min, coarse grind</span></div>
+<div class="t"><small>Label 12 / 500</small><span style="font:500 12px var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)">Step 2 of 4</span></div></section>
+
+<section class="sec"><h2>Space, shape, depth</h2>
+<div class="rule"><b>Spacing</b><span>4-point steps: 4, 8, 12, 16, 24, 32, 48. Screen side margin 22.</span></div>
+<div class="rule"><b>Radius</b><span>Chips and buttons: fully round. Cards: 26. Inner tiles: 20. Never below 12.</span></div>
+<div class="rule"><b>Depth</b><span>No hard borders. Layers are shown by surface colour (bg, surf, surf2). Only the primary button has a soft amber glow in Espresso.</span></div>
+<div class="rule"><b>Touch targets</b><span>At least 48 pt. Main actions 54 pt, so they are easy with wet hands.</span></div></section>
+
+<section class="sec"><h2>Components</h2>
+<p>The full v1 set.</p>
+<div class="row" style="margin-bottom:20px"><span class="btn">Start brew</span><span class="btn s">Pause</span><span class="btn g">Skip step</span></div>
+<div class="row" style="margin-bottom:20px"><span class="chip on">Sweet</span><span class="chip">Fruity</span><span class="chip on">Chocolate</span><span class="chip">Nutty</span><div class="track"><i></i></div></div>
+<div class="row" style="margin-bottom:24px"><div class="card"><b>French press</b><span>500 ml, 4 min, coarse</span></div><div class="card"><b>Moka pot</b><span>6 cup, 5 min, medium-fine</span></div></div>
+<div class="row"><div class="ringbox"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="var(--surf2)" stroke-width="9"/><circle cx="100" cy="100" r="90" fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" stroke-dasharray="565" stroke-dashoffset="215" transform="rotate(-90 100 100)"/></svg><span class="n">2:31</span></div>
+<p style="margin:0;max-width:40ch">Timer ring. It empties slowly, step by step, and the number inside is the only text. Step name and the why sit below it.</p></div></section>
+
+<section class="sec"><h2>Motion</h2>
+<div class="rule"><b>Default easing</b><span>240 ms ease-out. Screens fade and rise 12 px. No bounces or springs that overshoot.</span></div>
+<div class="rule"><b>Timer ring</b><span>Linear and continuous, updated every frame. Never jumps.</span></div>
+<div class="rule"><b>Step change</b><span>Number and step name cross-fade over 400 ms while the ring gently pulses once.</span></div>
+<div class="rule"><b>Live dot</b><span>A slow 2.4 s breathing dot shows the timer is running.</span></div>
+<div class="rule"><b>Reduce Motion</b><span>All animation drops to simple fades.</span></div></section>
+
+<section class="sec"><h2>Sound and haptics</h2><p>Two sound sets only, to keep the work small. The phone's silent switch is always respected, and haptics still work in silent mode.</p>
+<div class="rule"><b>Wood (default)</b><span>Soft, low wooden tap, like a spoon on a cup.</span></div>
+<div class="rule"><b>Glass</b><span>Light, short glass chime.</span></div>
+<div class="rule"><b>Next step</b><span>One sound plus a light tap. Heads-up 10 s before, a quiet single tick.</span></div>
+<div class="rule"><b>Brew done</b><span>A slightly longer two-note sound plus a soft success haptic.</span></div>
+<div class="rule"><b>Off</b><span>Haptics only, selectable in Settings.</span></div></section>
+
+<section class="sec"><h2>Live Activity</h2><p>The running brew stays on the lock screen and in the Dynamic Island. It always uses the dark Espresso look so it reads on any wallpaper.</p>
+<div class="two"><div><div class="lock"><div class="clk">9:41</div><div class="la"><small>French press · Step 2 of 4</small><span class="dot"></span><div class="big">2:31</div><small style="text-align:right">Steep</small><div class="bar"><i></i></div></div></div></div>
+<div><div class="isl"><span><span class="dot"></span> Steep</span><em>2:31</em></div><p style="margin-top:18px">Compact Dynamic Island: step name and countdown only. Long-press expands to the ring and the why line.</p></div></div></section>
+</div>
+<script>
+const themes={Espresso:[["bg","#1d1612","Screen"],["surf","#2a201b","Cards"],["surf2","#342822","Tracks, pressed"],["ink","#f2e8dc","Text"],["mute","#a39283","Secondary text"],["accent","#e2a56b","Main actions"],["soft","#3a2b21","Accent tint"],["ok","#9bb58a","Success"]],Cream:[["bg","#f6f0e7","Screen"],["surf","#ebe2d5","Cards"],["surf2","#e1d6c6","Tracks, pressed"],["ink","#33281f","Text"],["mute","#85766a","Secondary text"],["accent","#b5683f","Main actions"],["soft","#ead7c6","Accent tint"],["ok","#6f8a5c","Success"]]};
+const r=document.documentElement,sw=document.getElementById('sw'),bd=document.getElementById('bd'),bl=document.getElementById('bl');
+function draw(n){sw.innerHTML=themes[n].map(([k,h,u])=>`<div class="sw"><i style="background:${h};box-shadow:inset 0 0 0 1px #8883"></i><div><b>${k}</b><span>${h} · ${u}</span></div></div>`).join('')}
+function set(t){r.dataset.theme=t;bd.setAttribute('aria-pressed',t=='dark');bl.setAttribute('aria-pressed',t=='light');draw(t=='dark'?'Espresso':'Cream')}
+bd.onclick=()=>set('dark');bl.onclick=()=>set('light');set('dark');
+</script>

@@ -1,0 +1,10 @@
+{
+  "id": "moka-6cup",
+  "name": "Moka pot (6-cup)",
+  "kind": "fixed",
+  "capacityMl": 300,
+  "minMl": 300,
+  "maxMl": 300,
+  "defaultMl": 300,
+  "notes": "Fixed size: about 300 ml of water in the base and about 20 g of coffee in the basket. Gas stove."
+}

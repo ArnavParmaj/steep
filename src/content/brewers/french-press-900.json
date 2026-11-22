@@ -1,0 +1,10 @@
+{
+  "id": "french-press-900",
+  "name": "French press (900 ml)",
+  "kind": "volume",
+  "capacityMl": 900,
+  "minMl": 250,
+  "maxMl": 800,
+  "defaultMl": 500,
+  "notes": "Large IKEA press, 900 ml carafe. Leave headroom for the plunger and crust."
+}

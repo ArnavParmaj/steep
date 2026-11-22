@@ -1,0 +1,98 @@
+<title>Coffee App Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Figtree:wght@400;500;600&family=Outfit:wght@200;300;400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=DM+Mono:wght@300;400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concept: a review sheet. Three direction rows, each a trio of phone mockups (Home, Brew timer, Rate). */
+:root{--pg:#f3efe9;--pgink:#2a2520;--pgmute:#7b7167;--pgline:#ddd5ca}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pg:#1b1714;--pgink:#efe8de;--pgmute:#a19586;--pgline:#352e28;color-scheme:dark}}
+:root[data-theme="dark"]{--pg:#1b1714;--pgink:#efe8de;--pgmute:#a19586;--pgline:#352e28;color-scheme:dark}
+body{background:var(--pg);color:var(--pgink);font:15px/1.5 "Hanken Grotesk",system-ui,sans-serif;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font:500 30px/1.15 "Fraunces",serif;margin:0 0 8px;text-wrap:balance}
+.lede{color:var(--pgmute);max-width:62ch;margin:0 0 40px}
+.dir{margin:0 0 56px;padding-top:28px;border-top:1px solid var(--pgline)}
+.dir h2{font:500 22px "Fraunces",serif;margin:0 0 6px}
+.dir p{color:var(--pgmute);max-width:70ch;margin:0 0 6px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 22px;font-size:12.5px;color:var(--pgmute)}
+.tags span{border:1px solid var(--pgline);padding:3px 10px;border-radius:99px}
+.row{display:flex;gap:26px;overflow-x:auto;padding:6px 4px 20px}
+.cap{font-size:12px;color:var(--pgmute);margin:10px 0 0;text-align:center;letter-spacing:.04em;text-transform:uppercase}
+.col{flex:0 0 auto}
+.phone{width:290px;height:600px;border-radius:44px;background:var(--bg);color:var(--ink);position:relative;overflow:hidden;box-shadow:0 0 0 7px #0000000f,0 18px 40px -18px #0006;font-family:var(--body);display:flex;flex-direction:column;padding:46px 22px 20px}
+.phone *{box-sizing:border-box}
+.notch{position:absolute;top:10px;left:50%;width:84px;height:24px;margin-left:-42px;border-radius:14px;background:#000}
+.mute{color:var(--mute)}
+.small{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.hello{font:var(--dw) 30px/1.1 var(--display);margin:14px 0 4px;letter-spacing:-.01em}
+.card{background:var(--surf);border-radius:var(--r);padding:16px;display:flex;gap:14px;align-items:center;margin-top:12px}
+.card b{font:600 16px var(--body);display:block}
+.card span{font-size:13px;color:var(--mute)}
+.ico{width:46px;height:46px;border-radius:calc(var(--r) - 6px);background:var(--bg);display:grid;place-items:center;flex:none;color:var(--accent)}
+.last{margin-top:auto;border-radius:var(--r);padding:14px 16px;background:var(--accentsoft);display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.btn{height:54px;border-radius:99px;background:var(--accent);color:var(--onaccent);display:grid;place-items:center;font:600 16px var(--body)}
+.btn2{height:54px;width:54px;border-radius:99px;background:var(--surf);display:grid;place-items:center;color:var(--ink)}
+.tabs{display:flex;justify-content:space-around;margin-top:14px;font-size:11.5px;color:var(--mute)}
+.tabs i{font-style:normal}.tabs .on{color:var(--ink);font-weight:600}
+.timer{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.timer svg{position:absolute;inset:auto;width:244px;height:244px}
+.num{font:var(--nw) 64px/1 var(--numf);font-variant-numeric:tabular-nums;letter-spacing:-.02em;z-index:1}
+.step{font-size:13px;color:var(--mute);margin-top:6px;z-index:1}
+.why{background:var(--surf);border-radius:var(--r);padding:14px 16px;font-size:13.5px;line-height:1.45;margin-bottom:14px}
+.why .small{display:block;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{padding:8px 14px;border-radius:99px;background:var(--surf);font-size:13.5px}
+.chip.on{background:var(--accent);color:var(--onaccent)}
+.scale{margin-top:12px}
+.scale .lbl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute);margin-bottom:8px}
+.track{height:8px;border-radius:9px;background:var(--surf);position:relative}
+.track i{position:absolute;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accentsoft)}
+.tip{margin-top:auto;background:var(--accentsoft);border-radius:var(--r);padding:14px 16px;font-size:13.5px;margin-bottom:14px}
+.tip b{display:block;margin-bottom:2px}
+/* A: Porcelain */
+.A{--bg:#f6f1ea;--surf:#ece4d9;--ink:#33281f;--mute:#85766a;--accent:#b5683f;--onaccent:#fff8f0;--accentsoft:#ead7c6;--r:22px;--display:"Fraunces",serif;--dw:400;--body:"Figtree",sans-serif;--numf:"Fraunces",serif;--nw:300}
+/* B: Dark Roast */
+.B{--bg:#1d1612;--surf:#2a201b;--ink:#f2e8dc;--mute:#a39283;--accent:#e2a56b;--onaccent:#2a1a0e;--accentsoft:#3a2b21;--r:26px;--display:"Outfit",sans-serif;--dw:300;--body:"Outfit",sans-serif;--numf:"Outfit",sans-serif;--nw:200}
+/* C: Field Notes */
+.C{--bg:#eef0e6;--surf:#e1e5d4;--ink:#262d22;--mute:#76806b;--accent:#5f7a52;--onaccent:#f6f8ef;--accentsoft:#d3dbc0;--r:14px;--display:"Newsreader",serif;--dw:400;--body:"Hanken Grotesk",sans-serif;--numf:"DM Mono",monospace;--nw:300}
+.B .num{font-size:78px}
+.C .num{font-size:58px}
+.B .btn,.B .chip.on{box-shadow:0 8px 28px -10px #e2a56b88}
+.C .hello{font-style:italic}
+@media (prefers-reduced-motion:no-preference){.ring{transition:stroke-dashoffset .6s}}
+</style>
+
+<div class="wrap">
+<h1>Three directions for the brew app</h1>
+<p class="lede">Each row shows the same three screens: Home, the guided brew timer and Rate. All are soft and warm, none has sharp edges, and every direction would ship with a light and a dark theme. Sample content is a French press, 500 ml.</p>
+<div id="out"></div>
+</div>
+
+<script>
+const ico={
+fp:'<svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="14" height="13" rx="3"/><path d="M13 3v8M9 3h8M20 12h2.5v5H20"/></svg>',
+mk:'<svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h10l-1 6H9zM9 10l-2 12h12l-2-12M20 8h2v4h-3"/></svg>'};
+const C=2*Math.PI*112;
+function home(){return `<div class="small">Sunday</div><div class="hello">Good morning, AP</div><div class="mute" style="font-size:14px">What are we brewing?</div>
+<div class="card"><div class="ico">${ico.fp}</div><div><b>French press</b><span>500 ml · 4 min · coarse</span></div></div>
+<div class="card"><div class="ico">${ico.mk}</div><div><b>Moka pot</b><span>6 cup · 5 min · medium-fine</span></div></div>
+<div class="card" style="background:transparent;border:1.5px dashed var(--surf);justify-content:center;color:var(--mute);font-size:14px">Add a recipe</div>
+<div class="last"><span>Last brew<br><b>French press, 4/5</b></span><span style="color:var(--accent);font-weight:600">Brew again</span></div>
+<div class="tabs"><i class="on">Brew</i><i>Log</i><i>Beans</i><i>Settings</i></div>`}
+function timer(){const p=.62;return `<div style="display:flex;justify-content:space-between"><span class="small">French press</span><span class="small">Step 2 of 4</span></div>
+<div class="timer"><svg viewBox="0 0 244 244"><circle cx="122" cy="122" r="112" fill="none" stroke="var(--surf)" stroke-width="10"/><circle class="ring" cx="122" cy="122" r="112" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p)}" transform="rotate(-90 122 122)"/></svg>
+<div class="num">2:31</div><div class="step">Steep, lid on</div></div>
+<div class="why"><span class="small">Why</span>Leave it still. Hot water pulls out sweetness first, so stirring now only adds bitterness.</div>
+<div style="display:flex;gap:12px"><div class="btn2"><svg width="22" height="22" viewBox="0 0 22 22" fill="currentColor"><rect x="5" y="4" width="4" height="14" rx="1.5"/><rect x="13" y="4" width="4" height="14" rx="1.5"/></svg></div><div class="btn" style="flex:1">Next: plunge at 4:00</div></div>`}
+function rate(){return `<div class="small">French press · 4:00</div><div class="hello" style="font-size:28px">How did it taste?</div>
+<div class="scale"><div class="lbl"><span>Sour</span><span>Balanced</span><span>Bitter</span></div><div class="track"><i style="left:44%"></i></div></div>
+<div class="scale"><div class="lbl"><span>Weak</span><span>Strong</span></div><div class="track"><i style="left:62%"></i></div></div>
+<div class="chips"><span class="chip on">Sweet</span><span class="chip">Fruity</span><span class="chip on">Chocolate</span><span class="chip">Nutty</span><span class="chip">Floral</span></div>
+<div class="tip"><b>Next time</b>Go one click coarser on the grinder to cut the slight bitterness.</div>
+<div class="btn">Save to log</div>`}
+const dirs=[
+['A','Porcelain','Light, calm and paper-like. A soft serif for the greeting and the big timer digits, a friendly rounded sans for everything else, and a baked-clay accent. The feel of a nice ceramic cup.',['Fraunces + Figtree','Cream and clay','Large radius, 22 px']],
+['B','Dark Roast','Dark by default, with an amber accent that glows softly instead of shouting. Thin, very large numerals read from across the kitchen at 6 am. Quietest on the eyes of the three.',['Outfit, light weights','Espresso and amber','Pill buttons, 26 px']],
+['C','Field Notes','Muted sage and ink on pale paper, with a monospaced timer for the lab-notebook, coffee-nerd feel. Italic serif headings keep it gentle. The most distinctive and the most technical.',['Newsreader + DM Mono','Sage, ink and paper','Tighter radius, 14 px']]];
+document.getElementById('out').innerHTML=dirs.map(([k,n,d,t])=>`<section class="dir"><h2>${k}. ${n}</h2><p>${d}</p><div class="tags">${t.map(x=>`<span>${x}</span>`).join('')}</div>
+<div class="row">${[['Home',home],['Brew timer',timer],['Rate',rate]].map(([c,f])=>`<div class="col"><div class="phone ${k}"><div class="notch"></div>${f()}</div><div class="cap">${c}</div></div>`).join('')}</div></section>`).join('');
+</script>
